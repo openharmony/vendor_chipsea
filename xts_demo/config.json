@@ -1,0 +1,104 @@
+{
+  "product_name": "xts_demo",
+  "ohos_version": "OpenHarmony 2.3",
+  "version": "3.0",
+  "device_company": "chipsea",
+  "board": "cst85_wblink",
+  "kernel_type": "liteos_m",
+  "kernel_version": "3.0.0",
+  "subsystems": [
+    {
+      "subsystem": "kernel",
+      "components": [
+        { "component": "liteos_m",
+          "features":[
+          ]
+        }
+      ]
+    },
+    {
+      "subsystem": "startup",
+      "components": [
+        {
+          "component": "bootstrap_lite"
+        },
+        {
+          "component": "syspara_lite",
+          "features": [
+            "enable_ohos_startup_syspara_lite_use_posix_file_api = true",
+            "config_ohos_startup_syspara_lite_data_path = \"/data/\""
+          ]
+        }
+      ]
+    },
+    {
+      "subsystem": "hiviewdfx",
+      "components": [
+        {
+          "component": "hilog_lite",
+          "optional": "true"
+        },
+        {
+          "component": "hievent_lite",
+          "optional": "true"
+        }
+      ]
+    },
+    {
+      "subsystem": "distributedschedule",
+      "components": [
+        {
+          "component": "samgr_lite"
+        }
+      ]
+    },
+    {
+      "subsystem": "communication",
+      "components": [
+        {
+          "component": "wifi_lite",
+          "optional": "true"
+        }
+      ]
+    },
+    {
+      "subsystem": "utils",
+      "components": [
+        {
+          "component": "kv_store",
+          "features": [
+            "enable_ohos_utils_native_lite_kv_store_use_posix_kv_api = true"
+          ]
+        },
+        {
+          "component": "js_builtin"
+        },
+        {
+          "component": "timer_task"
+        },
+        {
+          "component": "kal_timer",
+          "features": [
+            "enable_histreamer_plugin_ffmpeg_adapter = false",
+            "config_ohos_distributedschedule_samgr_lite_shared_task_size = 4096"
+          ]
+        }
+      ]
+    },
+    {
+      "subsystem": "xts",
+      "components": [
+        { "component": "xts_acts",
+          "features":[
+            "config_ohos_xts_acts_utils_lite_kv_store_data_path = \"/data\"",
+            "enable_xts_service = true"
+          ]
+        },
+        { "component": "xts_tools", "features":[] }
+      ]
+    }
+  ],
+  "vendor_adapter_dir": "",
+  "third_party_dir": "//third_party",
+  "product_adapter_dir": "//vendor/chipsea/xts_demo/hals"
+}
