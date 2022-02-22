@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_wblink_demo": {
+      "module_list": [
+        "//vendor/chipsea/wblink_demo:wblink_demo"
+      ]
+    }
+  },
+  "subsystem": "product_wblink_demo"
+}
