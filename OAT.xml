@@ -22,19 +22,12 @@
         <licensefile></licensefile>
         <policylist>
             <policy name="projectPolicy" desc="">
-                <policyitem type="copyright" name="Copyright (c) 2021 Chipsea Co., Ltd. All rights reserved" path=".*" desc="original chipsea copyright"/>
+                <policyitem type="copyright" name="2021 chipsea Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
+                <policyitem type="copyright" name="2020 chipsea Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
+                <policyitem type="copyright" name="2021 Chipsea Co., Ltd. All rights reserved." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
+                <policyitem type="copyright" name="2022 CHIPSEA Co., Ltd. All rights reserved." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
                 <policyitem type="license" name="Apache" path=".*" desc="chipsea use apache 2.0 license"/>
             </policy>
         </policylist>
-        <filefilterlist>
-            <filefilter name="defaultFilter" desc="ARM Limited appache2">
-                <filteritem type="filepath" name="wblink_demo/config.json" desc="ARM limits license"/>
-                <filteritem type="filepath" name="display_demo/config.json" desc="ARM limits license"/>
-                <filteritem type="filepath" name="xts_demo/config.json" desc="ARM limits license"/>
-            </filefilter>
-            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies" >
-                <filteritem type="filename" name="*.a|*.so|*.bin|*.png|*.mp3|*.jpg|*.gif|.ttf" desc="Temp files"/>
-            </filefilter>
-        </filefilterlist>
     </oatconfig>
 </configuration>
