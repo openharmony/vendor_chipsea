@@ -119,8 +119,12 @@ static void WifiApEntry(void)
         dbg("Wifi Hotspot is not actived.\r\n");
         return;
     }
-    dbg("Wifi Hotspot is actived!\r\n");
-    while(1);
+
+    while(1) {
+        dbg("Wifi Hotspot is actived!\r\n");
+        osDelay(5000);
+    }
+
 }
 
 void WifiApDemo(void)

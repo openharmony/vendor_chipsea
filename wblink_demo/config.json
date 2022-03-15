@@ -11,7 +11,8 @@
       "subsystem": "kernel",
       "components": [
         { "component": "liteos_m",
-          "features":[
+          "features": [
+            "ohos_kernel_liteos_m_lwip_path = \"//device/soc/chipsea/cst85/liteos_m/sdk/modules/lwip-2.1\""
           ]
         }
       ]
