@@ -14,6 +14,7 @@
 declare_args() {
   wifi_sta_demo = false
   wifi_ap_demo = false
+  led_demo = false
 }
 
 static_library("example") {
@@ -28,5 +29,15 @@ static_library("example") {
 
   if (wifi_ap_demo) {
     sources += ["wifi_demo/wifi_ap_demo.c"]
+  }
+
+  if (led_demo) {
+    sources += ["led_demo/led_example.c"]
+    include_dirs = [
+      "//drivers/framework/include/platform",
+      "//drivers/framework/include/utils",
+      "//drivers/adapter/khdf/liteos_m/osal/include/",
+      "//drivers/framework/include/osal",
+    ]
   }
 }

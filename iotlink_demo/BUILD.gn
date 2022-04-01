@@ -11,8 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-print("CHIPSEA-CST85F01-wblink_demo")
-group("wblink_demo") {
+print("CHIPSEA-CST85F01-iotlink_demo")
+group("iotlink_demo") {
   deps = [
     "app:example"
   ]

@@ -1,5 +1,5 @@
 {
-  "product_name": "display_demo",
+  "product_name": "iotlink_demo",
   "ohos_version": "OpenHarmony 2.3",
   "version": "3.0",
   "device_company": "chipsea",
@@ -11,7 +11,8 @@
       "subsystem": "kernel",
       "components": [
         { "component": "liteos_m",
-          "features":[
+          "features": [
+            "ohos_kernel_liteos_m_lwip_path = \"//device/soc/chipsea/cst85/liteos_m/sdk/modules/lwip-2.1\""
           ]
         }
       ]
@@ -52,7 +53,7 @@
         }
       ]
     },
-   
+
     {
       "subsystem": "distributedschedule",
       "components": [
@@ -64,8 +65,8 @@
         }
       ]
     },
-    
-  
+
+
 
     {
       "subsystem": "communication",
@@ -79,7 +80,7 @@
   ],
   "vendor_adapter_dir": "",
   "third_party_dir": "//third_party",
-  "product_adapter_dir": "//vendor/chipsea/display_demo/hals",
+  "product_adapter_dir": "//vendor/chipsea/iotlink_demo/hals",
   "ohos_product_type":"",
   "ohos_manufacture":"",
   "ohos_brand":"",
