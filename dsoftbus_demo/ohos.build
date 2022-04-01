@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_dsoftbus_demo": {
+      "module_list": [
+        "//vendor/chipsea/dsoftbus_demo:dsoftbus_demo"
+      ]
+    }
+  },
+  "subsystem": "product_dsoftbus_demo"
+}

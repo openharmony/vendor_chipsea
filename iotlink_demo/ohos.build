@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "product_iotlink_demo": {
+      "module_list": [
+        "//vendor/chipsea/iotlink_demo:iotlink_demo"
+      ]
+    }
+  },
+  "subsystem": "product_iotlink_demo"
+}
