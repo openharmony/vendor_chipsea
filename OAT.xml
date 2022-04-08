@@ -26,6 +26,7 @@
                 <policyitem type="copyright" name="2020 chipsea Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
                 <policyitem type="copyright" name="2021 Chipsea Co., Ltd. All rights reserved." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
                 <policyitem type="copyright" name="2022 CHIPSEA Co., Ltd. All rights reserved." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
+                <policyitem type="copyright" name="Chipsea Technologies (Shenzhen) Corp." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc="original chipsea copyright"/>
                 <policyitem type="license" name="Apache" path=".*" desc="chipsea use apache 2.0 license"/>
             </policy>
         </policylist>
