@@ -13,4 +13,5 @@
 
 print("CHIPSEA-CST85F01-xts_demo")
 group("xts_demo") {
+  deps = [ "hals/utils/sys_param:vendor.para" ]
 }

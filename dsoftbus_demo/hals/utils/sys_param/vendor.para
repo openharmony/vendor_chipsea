@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2021-2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,11 +11,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-print("CHIPSEA-CST85F01-dsoftbus_demo")
-group("dsoftbus_demo") {
-  deps = [
-    "app:example",
-    "app/dsoftbus:dsoftbus_test",
-    "hals/utils/sys_param:vendor.para",
-  ]
-}
+const.build.characteristics=UNKNOWN
+
+const.product.manufacturer=chipsea
+
+const.product.brand=chipsea
+
+const.product.name=****
+
+const.build.product=****
+
+const.product.model=****
+
+const.software.model=****
+
+const.product.hardwareversion=cst85
+
+const.product.hardwareprofile="aout:true,display:true"
+
+const.ohos.serial=1234567890
+
+const.product.bootloader.version=bootloader
+
+const.product.cpu.abilist=****
+
+const.product.software.version="OpenHarmony-2.2-Beta2"
+
+const.product.firstapiversion=1

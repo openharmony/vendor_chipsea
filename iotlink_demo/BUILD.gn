@@ -14,6 +14,7 @@
 print("CHIPSEA-CST85F01-iotlink_demo")
 group("iotlink_demo") {
   deps = [
-    "app:example"
+    "app:example",
+    "hals/utils/sys_param:vendor.para",
   ]
 }
