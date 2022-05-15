@@ -15,7 +15,6 @@ print("CHIPSEA-CST85F01-dsoftbus_demo")
 group("dsoftbus_demo") {
   deps = [
     "app:example",
-    "app/dsoftbus:dsoftbus_test",
-    "hals/utils/sys_param:vendor.para",
+    "app/dsoftbus:dsoftbus_test"
   ]
 }

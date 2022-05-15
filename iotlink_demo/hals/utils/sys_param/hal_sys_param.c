@@ -25,7 +25,7 @@
 
 typedef unsigned char               u8;
 
-static char serialNumber[2*ETH_ALEN + 1];
+static char serialNumber[2*ETH_ALEN + 1]; // 2
 
 static char Hex2Char(u8 hex)
 {
@@ -61,7 +61,7 @@ const char* HalGetSerial(void)
 /**
  * @brief implement for js kvstorekit/filekit
  */
-const char *GetDataPath()
+const char *GetDataPath(void)
 {
     return "/data";
 }
