@@ -18,6 +18,7 @@
 #include "ohos_init.h"
 
 #define LED_GPIO 0
+#define ONE_SECOND (1000)
 /**
  * @brief led task output high and low levels to turn on and off LED
  *
@@ -36,7 +37,7 @@ static void LedTask(void)
             }
         }
 
-        rtos_task_suspend(1000);
+        rtos_task_suspend(ONE_SECOND);
     }
 }
 
@@ -51,7 +52,6 @@ void LedExampleEntry(void)
     if (rtos_task_create(LedTask, "led demo task", 0, 0x500, NULL, RTOS_TASK_PRIORITY(1), NULL)) {
         return -1;
     }
-
 }
 
 SYS_RUN(LedExampleEntry);

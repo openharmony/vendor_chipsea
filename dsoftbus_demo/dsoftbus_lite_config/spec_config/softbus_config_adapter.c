@@ -16,6 +16,7 @@
 #include "softbus_config_adapter.h"
 
 #define MAX_BYTES_LENGTH 4194304
+#define SOFTBUS_LOG_ERROR 3
 
 void SoftbusConfigAdapterInit(const ConfigSetProc *sets)
 {
@@ -25,11 +26,12 @@ void SoftbusConfigAdapterInit(const ConfigSetProc *sets)
     val = 0x1;
     sets->SetConfig(SOFTBUS_INT_AUTH_ABILITY_COLLECTION, (unsigned char*)&val, sizeof(val));
 
-    val = 3; // SOFTBUS_LOG_ERROR
+    val = SOFTBUS_LOG_ERROR;
     sets->SetConfig(SOFTBUS_INT_ADAPTER_LOG_LEVEL, (unsigned char*)&val, sizeof(val));
     val = 0;
     sets->SetConfig(SOFTBUS_INT_AUTO_NETWORKING_SWITCH, (unsigned char*)&val, sizeof(val));
 
     unsigned char *ifName = "0:eth0,1:wl1\0";
-    sets->SetConfig(SOFTBUS_STR_LNN_NET_IF_NAME, ifName, 13);
+    int len = 13;
+    sets->SetConfig(SOFTBUS_STR_LNN_NET_IF_NAME, ifName, len);
 }

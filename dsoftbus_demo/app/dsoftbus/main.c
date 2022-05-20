@@ -20,6 +20,11 @@
 #include "lwip/netif.h"
 #include "wifi_device.h"
 
+#include "softbus_server_frame.h"
+
+#define STACK_SIZE (65536)
+#define TASK_PRIORITY (24)
+
 static void DSoftBus(void)
 {
     printf("[XXX-XXX %s:%d]: %s\n", __FILE__, __LINE__, __func__);
@@ -30,16 +35,12 @@ static void DSoftBus(void)
     attr.cb_mem = NULL;
     attr.cb_size = 0U;
     attr.stack_mem = NULL;
-    attr.stack_size = 65536;
-    attr.priority = 24;
+    attr.stack_size = STACK_SIZE;
+    attr.priority = TASK_PRIORITY;
 
-    printf("[XXX-XXX %s:%d]: Begin to start the softbus server\n", __FILE__, __LINE__, __func__);
-
-    extern void InitSoftBusServer(void);
     if (osThreadNew((osThreadFunc_t) InitSoftBusServer, NULL, &attr) == NULL) {
         printf("Falied to create WifiSTATask!\n");
     }
-    printf("[XXX-XXX %s:%d]: Start the softbus server ok!\n", __FILE__, __LINE__, __func__);
 }
 
 APP_FEATURE_INIT(DSoftBus);

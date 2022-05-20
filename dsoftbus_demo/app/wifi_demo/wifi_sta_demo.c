@@ -21,6 +21,8 @@
 #define DEMO_WIFI_SSID "test"
 #define DEMO_WIFI_PASSWORD  "12345678"
 #define DEMO_WIFI_SECURITYTYPE WIFI_SEC_TYPE_PSK
+#define TWO_SECONDS (2000)
+#define TEN_SECONDS (10000)
 
 rtos_semaphore g_scanSemap;
 
@@ -65,7 +67,7 @@ static int32_t ScanTest()
 
     dbg("wait scan result...!\r\n");
     // 等待扫描结果
-    if (rtos_semaphore_wait(g_scanSemap, 10000) != 0) {
+    if (rtos_semaphore_wait(g_scanSemap, TEN_SECONDS) != 0) {
         dbg("StartScan timeout!\r\n");
         return -1;
     }
@@ -106,7 +108,7 @@ static int32_t AdvanceScanTest()
 
     dbg("wait scan result...!\r\n");
     // 等待扫描结果
-    if (rtos_semaphore_wait(g_scanSemap, 10000) != 0) {
+    if (rtos_semaphore_wait(g_scanSemap, TEN_SECONDS) != 0) {
         dbg("StartScan timeout!\r\n");
         return -1;
     }
@@ -155,19 +157,21 @@ int32_t ConnectTest()
 VOID WifiEntry(VOID)
 {
     // 延时2s后开始测试
-    osDelay(2000);
+    osDelay(TWO_SECONDS);
     unsigned char mac[WIFI_MAC_LEN] = {0};
 
     // 使能wifi设备
     if (EnableWifi() != WIFI_SUCCESS) {
         dbg("EnableWifi failed\r\n");
-        goto Exit;
+        return;
     }
 
     // 检查wifi设备工作是否正常
     if (IsWifiActive() == WIFI_STA_NOT_ACTIVE) {
         dbg("Wifi station is not actived.\n");
-        goto Exit;
+
+        (void)DisableWifi();
+        return;
     }
 
     // 注册回调事件
@@ -176,36 +180,41 @@ VOID WifiEntry(VOID)
     // 获取设备的MAC地址
     if (GetDeviceMacAddress(mac) != 0) {
         dbg("get mac addr\r\n");
-        goto Exit;
+
+        (void)DisableWifi();
+        return;
     }
-    dbg("MAC ADDRESS:%02x:%02x:%02x:%02x:%02x:%02x\r\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
     // 扫描测试
     if (ScanTest() != 0) {
         dbg("Wifi scan test err.\n");
-        goto Exit;
+
+        (void)DisableWifi();
+        return;
     }
     dbg("scan test success!\r\n");
 
     if (AdvanceScanTest() != 0) {
-        dbg("Wifi scan test err.\n");
-        goto Exit;
+        dbg("Wifi advance scan test err.\n");
+
+        (void)DisableWifi();
+        return;
     }
-    dbg("scan test success!\r\n");
+    dbg("Advance scan test success!\r\n");
 
     // 连接测试
     if (ConnectTest() != 0) {
         dbg("Wifi connect test err.\n");
-        goto Exit;
+
+        (void)DisableWifi();
+        return;
     }
     dbg("connect test success!\r\n");
-    osDelay(10000);
+    osDelay(TEN_SECONDS);
 
-Exit:
     Disconnect();
     // 去使能wifi
     (void)DisableWifi();
-    while(1);
 }
 
 int WifiStaDemo(void)
