@@ -15,6 +15,7 @@ static_library("dsoftbus_test") {
   include_dirs = [
     "//utils/native/lite/include",
     "//foundation/communication/dsoftbus/adapter/default_config/spec_config",
+    "//foundation/communication/dsoftbus/core/frame/common/include",
   ]
   deps = [ "//kernel/liteos_m/components/net" ]
 }

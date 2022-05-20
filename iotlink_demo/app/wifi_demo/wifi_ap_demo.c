@@ -23,6 +23,8 @@
 #define AP_SSID "chipsea_test"
 #define AP_PSK "12345678"
 #define CHANNEL_NUM 7
+#define TWO_SECONDS (2000)
+#define FIVE_SECONDS (5000)
 
 static void OnHotspotStaJoinHandler(StationInfo *info)
 {
@@ -43,8 +45,6 @@ static void OnHotspotStaJoinHandler(StationInfo *info)
     sta_list_node = stainfo;
     for (uint32_t i = 0; i < size; i++, sta_list_node++) {
         unsigned char *mac = sta_list_node->macAddress;
-        dbg("HotspotSta[%u]: macAddress=%02X:%02X:%02X:%02X:%02X:%02X\r\n", i,
-               mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     }
 }
 
@@ -56,9 +56,6 @@ static void OnHotspotStaLeaveHandler(StationInfo *info)
         return;
     }
     unsigned char *mac = info->macAddress;
-    dbg("HotspotStaLeave: macAddress=%02X:%02X:%02X:%02X:%02X:%02X, reason=%d.\r\n",
-           mac[0], mac[1], mac[2], mac[3], mac[4], mac[5],
-           info->disconnectedReason);
 }
 
 // 热点状态变化回调函数
@@ -81,9 +78,9 @@ WifiEvent g_wifiEventHandler = {
 static void WifiApEntry(void)
 {
     WifiErrorCode error;
-    osDelay(2000);
+    osDelay(TWO_SECONDS);
 
-    //注册wifi事件的回调函数
+    // 注册wifi事件的回调函数
     error = RegisterWifiEvent(&g_wifiEventHandler);
     if (error != WIFI_SUCCESS) {
         dbg("RegisterWifiEvent failed, error = %d.\r\n", error);
@@ -114,17 +111,16 @@ static void WifiApEntry(void)
     }
     dbg("EnableHotspot succeed!\r\n");
 
-    //检查热点是否已开启
+    // 检查热点是否已开启
     if (IsHotspotActive() == WIFI_HOTSPOT_NOT_ACTIVE) {
         dbg("Wifi Hotspot is not actived.\r\n");
         return;
     }
 
-    while(1) {
+    while (1) {
         dbg("Wifi Hotspot is actived!\r\n");
-        osDelay(5000);
+        osDelay(FIVE_SECONDS);
     }
-
 }
 
 void WifiApDemo(void)

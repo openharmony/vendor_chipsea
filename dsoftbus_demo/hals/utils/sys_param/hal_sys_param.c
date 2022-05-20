@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <sys/types.h>
+
 #include "hal_sys_param.h"
 
 #define OHOS_DEVICE_TYPE "UNKNOWN"
@@ -37,9 +39,9 @@
 #define CHAR_CAPITAL_OFFSET 0x37
 #define STR_END_FLAG '\0'
 
-typedef unsigned char               u8;
+#define TWO (2)
 
-static char serialNumber[2*ETH_ALEN + 1];
+static char serialNumber[TWO*ETH_ALEN + 1];
 
 const char* HalGetDeviceType(void)
 {
@@ -86,7 +88,7 @@ const char* HalGetHardwareProfile(void)
     return OHOS_HARDWARE_PROFILE;
 }
 
-static char Hex2Char(u8 hex)
+static char Hex2Char(uint8_t hex)
 {
     if (hex < HEX_A) {
         return hex + CHAR_NUM_OFFSET;
@@ -104,7 +106,7 @@ const char* HalGetSerial(void)
         GetDeviceMacAddress(macAddr);
         int j = 0;
         for (int i = 0; i < ETH_ALEN; i++) {
-            u8 lowFour, highFour;
+            uint8_t lowFour, highFour;
             highFour = (macAddr[i] & MAC_HIGH_MASK) >> MAC_BITS;
             serialNumber[j] = Hex2Char(highFour);
             j++;
@@ -164,7 +166,7 @@ int HalGetFirstApiVersion(void)
 /**
  * @brief implement for js kvstorekit/filekit
  */
-const char *GetDataPath()
+const char *GetDataPath(void)
 {
     return "/data";
 }
