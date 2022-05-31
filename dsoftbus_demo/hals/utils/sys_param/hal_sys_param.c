@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <sys/types.h>
+
 #include "hal_sys_param.h"
 
 #define OHOS_DEVICE_TYPE "UNKNOWN"
@@ -164,7 +166,7 @@ int HalGetFirstApiVersion(void)
 /**
  * @brief implement for js kvstorekit/filekit
  */
-const char *GetDataPath()
+const char *GetDataPath(void)
 {
     return "/data";
 }
