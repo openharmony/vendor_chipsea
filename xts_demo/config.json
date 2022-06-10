@@ -63,14 +63,19 @@
       ]
     },
     {
-      "subsystem": "utils",
+      "subsystem": "distributeddatamgr",
       "components": [
         {
           "component": "kv_store",
           "features": [
             "enable_ohos_utils_native_lite_kv_store_use_posix_kv_api = true"
           ]
-        },
+        }
+      ]
+    },
+    {
+      "subsystem": "utils",
+      "components": [
         {
           "component": "js_builtin"
         },
