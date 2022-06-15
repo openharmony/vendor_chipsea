@@ -18,14 +18,13 @@
       ]
     },
     {
-      "subsystem": "utils",
+      "subsystem": "distributeddatamgr",
       "components": [
         {
           "component": "kv_store"
         }
       ]
     },
-
     {
       "subsystem": "startup",
       "components": [
