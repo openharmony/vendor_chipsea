@@ -15,6 +15,6 @@ print("CHIPSEA-CST85F01-dsoftbus_demo")
 group("dsoftbus_demo") {
   deps = [
     "app:example",
-    "app/dsoftbus:dsoftbus_test"
+    "app/dsoftbus:dsoftbus_test",
   ]
 }
