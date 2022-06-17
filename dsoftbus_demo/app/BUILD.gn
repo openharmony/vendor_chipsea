@@ -17,26 +17,24 @@ declare_args() {
 }
 
 static_library("example") {
-  sources = [
-    "example.c",
-  ]
+  sources = [ "example.c" ]
   deps = [ "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_static" ]
 
   if (wifi_sta_demo) {
-    sources += ["wifi_demo/wifi_sta_demo.c"]
+    sources += [ "wifi_demo/wifi_sta_demo.c" ]
   }
 
   if (wifi_ap_demo) {
-    sources += ["wifi_demo/wifi_ap_demo.c"]
+    sources += [ "wifi_demo/wifi_ap_demo.c" ]
   }
 
   if (led_demo) {
-    sources += ["led_demo/led_example.c"]
+    sources += [ "led_demo/led_example.c" ]
     include_dirs = [
-      "//drivers/framework/include/platform",
-      "//drivers/framework/include/utils",
-      "//drivers/adapter/khdf/liteos_m/osal/include/",
-      "//drivers/framework/include/osal",
+      "//drivers/hdf_core/framework/include/platform",
+      "//drivers/hdf_core/framework/include/utils",
+      "//drivers/hdf_core/adapter/khdf/liteos_m/osal/include/",
+      "//drivers/hdf_core/framework/include/osal",
     ]
   }
 }
