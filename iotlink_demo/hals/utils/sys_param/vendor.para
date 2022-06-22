@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2021-2022 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,15 +11,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-static_library("hal_sysparam") {
-  sources = [ "hal_sys_param.c" ]
-  include_dirs = [ "//base/startup/init_lite/interfaces/hals" ]
-  defines = [
-    "INCREMENTAL_VERSION=\"${ohos_version}\"",
-    "BUILD_TYPE=\"${ohos_build_type}\"",
-    "BUILD_USER=\"${ohos_build_user}\"",
-    "BUILD_TIME=\"${ohos_build_time}\"",
-    "BUILD_HOST=\"${ohos_build_host}\"",
-    "BUILD_ROOTHASH=\"${ohos_build_roothash}\"",
-  ]
-}
+const.build.characteristics=linkiot
+
+const.product.manufacturer=chipsea
+
+const.product.brand=chipsea
+
+const.product.name=****
+
+const.build.product=****
+
+const.product.model=****
+
+const.software.model=****
+
+const.product.hardwareversion=cst85
+
+const.product.hardwareprofile="aout:true,display:true"
+
+const.ohos.serial=1234567890
+
+const.product.bootloader.version=bootloader
+
+const.product.cpu.abilist=****
+
+const.product.software.version="OpenHarmony-2.2-Beta2"
+
+const.product.firstapiversion=1
