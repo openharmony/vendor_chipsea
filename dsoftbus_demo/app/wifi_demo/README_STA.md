@@ -118,7 +118,7 @@ static void OnWifiScanStateChangedHandler(int state, int size)
 
   (void)state;
 
-  if (state == WIFI_STATE_AVALIABLE) {
+  if (state == WIFI_STATE_AVAILABLE) {
 
 ​    // 接收到扫描结果，释放信号量
 

@@ -29,7 +29,7 @@ rtos_semaphore g_scanSemap;
 static void OnWifiScanStateChangedHandler(int state, int size)
 {
     (void)state;
-    if (state == WIFI_STATE_AVALIABLE) {
+    if (state == WIFI_STATE_AVAILABLE) {
         // 接收到扫描结果，释放信号量
         rtos_semaphore_signal(g_scanSemap, false);
         dbg("get wifi scan result %d\r\n", size);
