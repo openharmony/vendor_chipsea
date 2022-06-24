@@ -39,7 +39,7 @@ static void DSoftBus(void)
     attr.priority = TASK_PRIORITY;
 
     if (osThreadNew((osThreadFunc_t) InitSoftBusServer, NULL, &attr) == NULL) {
-        printf("Falied to create WifiSTATask!\n");
+        printf("Failed to create WifiSTATask!\n");
     }
 }
 
