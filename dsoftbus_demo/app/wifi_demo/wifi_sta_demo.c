@@ -29,7 +29,7 @@ rtos_semaphore g_scanSemap;
 static void OnWifiScanStateChangedHandler(int state, int size)
 {
     (void)state;
-    if (state == WIFI_STATE_AVALIABLE) {
+    if (state == WIFI_STATE_AVAILABLE) {
         // 接收到扫描结果，释放信号量
         rtos_semaphore_signal(g_scanSemap, false);
         dbg("get wifi scan result %d\r\n", size);
@@ -168,7 +168,7 @@ VOID WifiEntry(VOID)
 
     // 检查wifi设备工作是否正常
     if (IsWifiActive() == WIFI_STA_NOT_ACTIVE) {
-        dbg("Wifi station is not actived.\n");
+        dbg("Wifi station is not activated.\n");
 
         (void)DisableWifi();
         return;

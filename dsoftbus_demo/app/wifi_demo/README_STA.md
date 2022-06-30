@@ -118,7 +118,7 @@ static void OnWifiScanStateChangedHandler(int state, int size)
 
   (void)state;
 
-  if (state == WIFI_STATE_AVALIABLE) {
+  if (state == WIFI_STATE_AVAILABLE) {
 
 ​    // 接收到扫描结果，释放信号量
 
@@ -314,7 +314,7 @@ VOID WifiEntry(VOID)
 
   if (IsWifiActive() == WIFI_STA_NOT_ACTIVE) {
 
-​    dbg("Wifi station is not actived.\n");
+​    dbg("Wifi station is not activated.\n");
 
 ​    goto Exit;
 
