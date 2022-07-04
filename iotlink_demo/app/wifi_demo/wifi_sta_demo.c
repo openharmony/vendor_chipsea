@@ -168,7 +168,7 @@ VOID WifiEntry(VOID)
 
     // 检查wifi设备工作是否正常
     if (IsWifiActive() == WIFI_STA_NOT_ACTIVE) {
-        dbg("Wifi station is not actived.\n");
+        dbg("Wifi station is not activated.\n");
 
         (void)DisableWifi();
         return;

@@ -260,13 +260,13 @@ static void WifiApEntry(void)
 
   if (IsHotspotActive() == WIFI_HOTSPOT_NOT_ACTIVE) {
 
-​    dbg("Wifi Hotspot is not actived.\r\n");
+​    dbg("Wifi Hotspot is not activated.\r\n");
 
 ​    return;
 
   }
 
-  dbg("Wifi Hotspot is actived!\r\n");
+  dbg("Wifi Hotspot is activated!\r\n");
 
 }
 ```
@@ -313,7 +313,7 @@ DHCPS init: ip=192.168.88.1
 HotspotStateChanged:state is 1.
 wifi hotspot active.
 EnableHotspot succeed!
-Wifi Hotspot is actived!
+Wifi Hotspot is activated!
 _add gtk:1
 _add ptk:0
 station join: mac->C2:67:83:F6:B6:9B ip-> 192.168.88.10,cnt= 1

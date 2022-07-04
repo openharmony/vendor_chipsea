@@ -113,12 +113,12 @@ static void WifiApEntry(void)
 
     // 检查热点是否已开启
     if (IsHotspotActive() == WIFI_HOTSPOT_NOT_ACTIVE) {
-        dbg("Wifi Hotspot is not actived.\r\n");
+        dbg("Wifi Hotspot is not activated.\r\n");
         return;
     }
 
     while (1) {
-        dbg("Wifi Hotspot is actived!\r\n");
+        dbg("Wifi Hotspot is activated!\r\n");
         osDelay(FIVE_SECONDS);
     }
 }
