@@ -79,7 +79,7 @@
       ]
     },
     {
-      "subsystem": "utils",
+      "subsystem": "commonlibrary",
       "components": [
         {
           "component": "js_builtin"
