@@ -54,7 +54,7 @@ static void RegistEvent(void)
     }
 }
 
-static int32_t ScanTest()
+static int32_t ScanTest(void)
 {
     unsigned int rstSize = WIFI_SCAN_HOTSPOT_LIMIT;
 
@@ -91,7 +91,7 @@ static int32_t ScanTest()
     return 0;
 }
 
-static int32_t AdvanceScanTest()
+static int32_t AdvanceScanTest(void)
 {
     unsigned int rstSize = WIFI_SCAN_HOTSPOT_LIMIT;
     WifiScanParams params = {
@@ -132,7 +132,7 @@ static int32_t AdvanceScanTest()
     return 0;
 }
 
-int32_t ConnectTest()
+int32_t ConnectTest(void)
 {
     int netId;
     // 设定连接热点配置信息
