@@ -30,10 +30,6 @@
             "enable_ohos_startup_init_lite_use_posix_file_api = true",
             "config_ohos_startup_init_lite_data_path = \"/data/\""
           ]
-        },
-        {
-          "component": "syspara_lite",
-          "features": []
         }
       ]
     },
