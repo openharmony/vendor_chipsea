@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Chipsea Technologies (Shenzhen) Corp., Ltd. All rights reserved.
+ * Copyright (c) 2020 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,58 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <sys/types.h>
 
-#include "wifi_device.h"
 #include "hal_sys_param.h"
 
-#define ETH_ALEN 6
-#define MAC_BITS 4
-#define HEX_A 0xa
-#define MAC_HIGH_MASK 0xf0
-#define MAC_LOW_MASK 0x0f
-#define CHAR_NUM_OFFSET 0x30
-#define CHAR_CAPITAL_OFFSET 0x37
-#define STR_END_FLAG '\0'
-
-#define TWO (2)
-
-static char serialNumber[TWO*ETH_ALEN + 1];
-
-static char Hex2Char(uint8_t hex)
-{
-    if (hex < HEX_A) {
-        return hex + CHAR_NUM_OFFSET;
-    } else {
-        return hex + CHAR_CAPITAL_OFFSET;
-    }
-}
+static char serialNumber[13] = {0};
 
 const char* HalGetSerial(void)
 {
-    unsigned char macAddr[ETH_ALEN];
-    // as devboard has no production serial number, we just
-    // use wifi mac address as device serial number.
-    if (serialNumber[0] == STR_END_FLAG) {
-        GetDeviceMacAddress(macAddr);
-
-        int j = 0;
-        for (int i = 0; i < ETH_ALEN; i++) {
-            uint8_t lowFour, highFour;
-            highFour = (macAddr[i] & MAC_HIGH_MASK) >> MAC_BITS;
-            serialNumber[j] = Hex2Char(highFour);
-            j++;
-            lowFour = macAddr[i] & MAC_LOW_MASK;
-            serialNumber[j] = Hex2Char(lowFour);
-            j++;
-        }
+    unsigned char macAddr[6];
+    GetDeviceMacAddress(macAddr);
+    int ret = snprintf_s(serialNumber, sizeof(serialNumber), sizeof(serialNumber) - 1, "%02X%02X%02X%02X%02X%02X",
+        macAddr[0], macAddr[1], macAddr[2], macAddr[3], macAddr[4], macAddr[5]);
+    if (ret < 0) {
+        printf("snprintf ret fail!\n");
+        return NULL;
     }
     return serialNumber;
-}
-/**
- * @brief implement for js kvstorekit/filekit
- */
-const char *GetDataPath(void)
-{
-    return "/data";
 }

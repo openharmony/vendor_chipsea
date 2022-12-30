@@ -15,23 +15,29 @@
 
 #include "softbus_config_adapter.h"
 
-#define MAX_BYTES_LENGTH 4194304
-#define SOFTBUS_LOG_ERROR 3
-
-void SoftbusConfigAdapterInit(const ConfigSetProc *sets)
+void SoftbusConfigAdapterInit(const ConfigSetProc *ConfigSets)
 {
-    int32_t val;
-    val = MAX_BYTES_LENGTH;
-    sets->SetConfig(SOFTBUS_INT_MAX_BYTES_LENGTH, (unsigned char*)&val, sizeof(val));
-    val = 0x1;
-    sets->SetConfig(SOFTBUS_INT_AUTH_ABILITY_COLLECTION, (unsigned char*)&val, sizeof(val));
-
-    val = SOFTBUS_LOG_ERROR;
-    sets->SetConfig(SOFTBUS_INT_ADAPTER_LOG_LEVEL, (unsigned char*)&val, sizeof(val));
-    val = 0;
-    sets->SetConfig(SOFTBUS_INT_AUTO_NETWORKING_SWITCH, (unsigned char*)&val, sizeof(val));
-
+    // Set ifname.
     unsigned char *ifName = "0:eth0,1:wl1\0";
     int len = 13;
-    sets->SetConfig(SOFTBUS_STR_LNN_NET_IF_NAME, ifName, len);
+    ConfigSets->SetConfig(SOFTBUS_STR_LNN_NET_IF_NAME, ifName, len);
+
+    // Set max bytes length.
+    int32_t max_bytes_length = 4194304;
+    ConfigSets->SetConfig(SOFTBUS_INT_MAX_BYTES_LENGTH,
+        (unsigned char*)&max_bytes_length, sizeof(max_bytes_length));
+
+    // Set ability collection.
+    int32_t ability_collection = 0x1;
+    ConfigSets->SetConfig(SOFTBUS_INT_AUTH_ABILITY_COLLECTION,
+        (unsigned char*)&ability_collection, sizeof(ability_collection));
+
+    // Set log level.
+    int32_t log_level = 3;
+    ConfigSets->SetConfig(SOFTBUS_INT_ADAPTER_LOG_LEVEL, (unsigned char*)&log_level, sizeof(log_level));
+
+    // Set networking switch.
+    int32_t networking_switch = 0;
+    ConfigSets->SetConfig(SOFTBUS_INT_AUTO_NETWORKING_SWITCH,
+        (unsigned char*)&networking_switch, sizeof(networking_switch));
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Chipsea Technologies (Shenzhen) Corp., Ltd. All rights reserved.
+ * Copyright (c) 2020 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,12 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #include "hal_sys_param.h"
 
-/**
- * @brief implement for js kvstorekit/filekit
- */
-const char *GetDataPath(void)
+static char serialNumber[13] = {0};
+
+const char* HalGetSerial(void)
 {
-    return "/data";
+    unsigned char macAddr[6];
+    GetDeviceMacAddress(macAddr);
+    int ret = snprintf_s(serialNumber, sizeof(serialNumber), sizeof(serialNumber) - 1, "%02X%02X%02X%02X%02X%02X",
+        macAddr[0], macAddr[1], macAddr[2], macAddr[3], macAddr[4], macAddr[5]);
+    if (ret < 0) {
+        printf("snprintf ret fail!\n");
+        return NULL;
+    }
+    return serialNumber;
 }
