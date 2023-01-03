@@ -25,7 +25,6 @@ const char* HalGetSerial(void)
         macAddr[0], macAddr[1], macAddr[2], macAddr[3], macAddr[4], macAddr[5]);
     if (ret < 0) {
         printf("snprintf ret fail!\n");
-        return NULL;
     }
     return serialNumber;
 }
