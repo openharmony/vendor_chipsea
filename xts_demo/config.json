@@ -81,14 +81,14 @@
     {
       "subsystem": "xts",
       "components": [
-        { "component": "xts_acts",
+        { "component": "acts",
           "features":[
             "config_ohos_xts_acts_utils_lite_kv_store_data_path = \"/data\"",
             "enable_xts_service = true",
             "build_xts = true"
           ]
         },
-        { "component": "xts_tools", "features":[] }
+        { "component": "tools", "features":[] }
       ]
     }
   ],
